@@ -28,7 +28,7 @@ output "tags" {
           "Stage", "${null_resource.default.triggers.stage}",
           "Client", "${null_resource.default.triggers.client}",
           "StackName", "${null_resource.default.triggers.stack_name}",
-          "Terraform", "True"
+          "Terraform", "true"
         ), var.tags
       )
     }"
