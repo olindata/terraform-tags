@@ -22,7 +22,7 @@ output "stack_name" {
 # Merge input tags with our tags.
 output "tags" {
   value = "${
-      merge( 
+      merge(
         map(
           "Name", "${null_resource.default.triggers.id}",
           "Stage", "${null_resource.default.triggers.stage}",
@@ -34,4 +34,19 @@ output "tags" {
     }"
 
   description = "Normalized tag map"
+}
+
+# Use the same tag map as above, but autoscalers expect a list instead of a map
+output "asg_tags" {
+  value = ["${
+    list(
+      map("key", "Name", "value", null_resource.default.triggers.id, "propagate_at_launch", true),
+      map("key", "Stage", "value", null_resource.default.triggers.stage, "propagate_at_launch", true),
+      map("key", "Client", "value", null_resource.default.triggers.client, "propagate_at_launch", true),
+      map("key", "StackName", "value", null_resource.default.triggers.stack_name, "propagate_at_launch", true),
+      map("key", "Terraform", "value", "true", "propagate_at_launch", true)
+    )
+  }"]
+
+  description = "Normalized tag list for an autoscaler to propogate tags"
 }
