@@ -1,3 +1,5 @@
 OlinData Terraform Standardized Tag Naming Null Module
 
-Loosely based around: https://github.com/cloudposse/terraform-null-label
+Originally based on: https://github.com/cloudposse/terraform-null-label
+
+# Todo: Add more info on how to use
