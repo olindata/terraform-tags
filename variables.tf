@@ -6,6 +6,7 @@ variable "name" {
 
 variable "stage" {
   description = "Stage, e.g. 'prod', 'stg', 'dev', 'beta', 'test'"
+  default     = ""
 }
 
 variable "client" {
