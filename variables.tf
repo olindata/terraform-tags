@@ -10,10 +10,12 @@ variable "stage" {
 
 variable "client" {
   description = "Client name 3-letter abbreviation"
+  default     = ""
 }
 
 variable "stack_name" {
   description = "The name of the stack, which should be hardcoded into every stack.  Eg: vpc, mvp-ec2"
+  default     = ""
 }
 
 variable "delimiter" {
