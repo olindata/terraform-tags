@@ -4,9 +4,14 @@ output "id" {
   description = "Disambiguated ID"
 }
 
+output "name" {
+  value       = "${null_resource.default.triggers.name}"
+  description = "Normalized name"
+}
+
 output "stage" {
   value       = "${null_resource.default.triggers.stage}"
-  description = "Normalized name"
+  description = "Normalized stage"
 }
 
 output "client" {
@@ -24,7 +29,8 @@ output "tags" {
   value = "${
       merge(
         map(
-          "Name", "${null_resource.default.triggers.id}",
+          "Id", "${null_resource.default.triggers.id}",
+          "Name", "${null_resource.default.triggers.name}",
           "Stage", "${null_resource.default.triggers.stage}",
           "Client", "${null_resource.default.triggers.client}",
           "StackName", "${null_resource.default.triggers.stack_name}",
@@ -40,7 +46,8 @@ output "tags" {
 output "asg_tags" {
   value = ["${
     list(
-      map("key", "Name", "value", null_resource.default.triggers.id, "propagate_at_launch", true),
+      map("key", "Id", "value", null_resource.default.triggers.id, "propagate_at_launch", true),
+      map("key", "Name", "value", null_resource.default.triggers.name, "propagate_at_launch", true),
       map("key", "Stage", "value", null_resource.default.triggers.stage, "propagate_at_launch", true),
       map("key", "Client", "value", null_resource.default.triggers.client, "propagate_at_launch", true),
       map("key", "StackName", "value", null_resource.default.triggers.stack_name, "propagate_at_launch", true),
