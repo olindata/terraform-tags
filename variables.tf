@@ -20,13 +20,13 @@ variable "stack_name" {
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between strings, typically is -, optionally set to empty string for windows hostnames and such"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map
   default     = {}
   description = "Additional tags to tack onto this object (e.g. `map('Purpose`,`webserver`)"
 }
